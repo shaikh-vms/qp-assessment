@@ -17,7 +17,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private String orderId;
+    private Long orderId;
 
     @Column(name = "order_quantity")
     private Integer quantity;
@@ -26,11 +26,11 @@ public class Order {
     @JoinColumn(name = "id")
     private Grocery grocery;
 
-	public String getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 

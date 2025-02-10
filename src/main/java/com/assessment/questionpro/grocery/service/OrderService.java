@@ -1,6 +1,7 @@
 package com.assessment.questionpro.grocery.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,13 +30,16 @@ public class OrderService {
 
 			Long itemId = groceryOrder.getGroceryItemId();
 
-			Grocery grocery = groceryRepository.findById(itemId).orElseThrow();
+			 Optional<Grocery> groceryOptional = groceryRepository.findById(itemId);
+		        if(groceryOptional.isEmpty())
+		        	throw new RuntimeException("Invalid item/ID");
+		        Grocery grocery = groceryOptional.get();
 
 			Integer availableStock = grocery.getStock();
 			Integer quantityAsked = groceryOrder.getQuantity();
 
 			if (quantityAsked > availableStock) {
-				throw new UnsupportedOperationException("Item " + itemId + " out of stock");
+				throw new RuntimeException("Item " + itemId + " out of stock");
 			} else {
 				grocery.setStock(availableStock - quantityAsked);
 				groceryRepository.save(grocery);

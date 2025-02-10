@@ -1,6 +1,7 @@
 package com.assessment.questionpro.grocery.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,11 @@ public class GroceryService {
     }
 
     public Grocery updateStock(Long id, Integer stock) {
-        Grocery grocery = groceryRepository.findById(id).orElseThrow();
+        Optional<Grocery> groceryOptional = groceryRepository.findById(id);
+        if(groceryOptional.isEmpty())
+        	throw new RuntimeException("Invalid item/ID");
+        Grocery grocery = groceryOptional.get();
+        
         grocery.setStock(stock);
         return groceryRepository.save(grocery);
     }
