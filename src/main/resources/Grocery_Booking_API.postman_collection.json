@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "3d991c54-1b4d-40f4-9449-851c50f03aff",
+		"name": "Grocery_Booking_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41947872"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "add grocery",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"name\": \"groceryItem-{{$randomInt}}\",\r\n        \"price\": 89.00,\r\n        \"stock\": 10\r\n    },\r\n    {\r\n        \"name\": \"groceryItem-{{$randomInt}}\",\r\n        \"price\": 20.00,\r\n        \"stock\": 11\r\n    },\r\n    {\r\n        \"name\": \"groceryItem-{{$randomInt}}\",\r\n        \"price\": 30.00,\r\n        \"stock\": 12\r\n    },\r\n    {\r\n        \"name\": \"groceryItem-{{$randomInt}}\",\r\n        \"price\": 40.00,\r\n        \"stock\": 13\r\n    },\r\n    {\r\n        \"name\": \"groceryItem-{{$randomInt}}\",\r\n        \"price\": 80.00,\r\n        \"stock\": 14\r\n    },\r\n    {\r\n        \"name\": \"groceryItem-{{$randomInt}}\",\r\n        \"price\": 9.00,\r\n        \"stock\": 1\r\n    },\r\n    {\r\n        \"name\": \"groceryItem-{{$randomInt}}\",\r\n        \"price\": 8.00,\r\n        \"stock\": 2\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/grocery/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"grocery",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/grocery/test",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"grocery",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/grocery/view",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"grocery",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/grocery/remove/7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"grocery",
+								"remove",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"groceryItem-639\",\r\n    \"price\": 80.0,\r\n    \"stock\": 14\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/grocery/update/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"grocery",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update stock",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin/grocery/updateStock/5?stock=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"grocery",
+								"updateStock",
+								"5"
+							],
+							"query": [
+								{
+									"key": "stock",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "view all available",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/groceries",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"groceries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"groceryItemId\": 3,\r\n        \"quantity\": 1\r\n    },\r\n    {\r\n        \"groceryItemId\": 1006,\r\n        \"quantity\": 11\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/groceries/order",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"groceries",
+								"order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/auth/register?username=user&password=user&role=USER",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user"
+								},
+								{
+									"key": "password",
+									"value": "user"
+								},
+								{
+									"key": "role",
+									"value": "USER"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
