@@ -1,4 +1,4 @@
-package com.assessment.questionpro.grocery.app;
+package com.assessment.questionpro.grocery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
